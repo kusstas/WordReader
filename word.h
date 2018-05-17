@@ -11,6 +11,12 @@ public:
     Word(QString const& word);
     Word(QString&& word);
 
+    Word(Word const& word) = default;
+    Word(Word&& word) = default;
+
+    Word& operator = (Word const& word) = default;
+    Word& operator = (Word&& word) = default;
+
     QString const& toString() const;
     unsigned int weight() const;
 

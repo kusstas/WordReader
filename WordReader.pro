@@ -18,9 +18,11 @@ SOURCES += \
         main.cpp \
     word.cpp \
     word_weight.cpp \
-    word_reader.cpp
+    word_reader.cpp \
+    session.cpp
 
 HEADERS += \
     word.h \
     word_weight.h \
-    word_reader.h
+    word_reader.h \
+    session.h

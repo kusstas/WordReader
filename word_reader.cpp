@@ -7,27 +7,33 @@ WordReader::WordReader()
 {
 }
 
-QVector<Word> WordReader::read(QString const& fileName) const
+std::vector<Word> WordReader::read(QString const& fileName) const
 {
     QFile file(fileName);
     file.open(QFile::ReadOnly | QFile::Text);
-    QVector<Word> const& result = read(file);
+    std::vector<Word> const& result = read(file);
     file.close();
     return result;
 }
 
-QVector<Word> WordReader::read(QFile& file) const
+std::vector<Word> WordReader::read(QFile& file) const
 {
+    std::vector<Word> out;
     bool word = false;
-    QString tmp;
+    QString str;
     char s;
     while (!file.atEnd()) {
-        file.getChar(s);
-        if (word) {
-
+        file.getChar(&s);
+        if (s == '\"') {
+            if (word) {
+               out.emplace_back(std::move(str));
+               str = "";
+            }
+            word = !word;
         }
-        else if (s == '\"') {
-            word = true;
+        else if (word) {
+            str += s;
         }
     }
+    return out;
 }

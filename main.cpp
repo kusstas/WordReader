@@ -1,9 +1,10 @@
-#include <QCoreApplication>
-#include <QDebug>
-#include "word.h"
+#include "session.h"
+#include <iostream>
 
-int main(int argc, char *argv[])
+int main()
 {
-    QCoreApplication a(argc, argv);
-    return a.exec();
+    Session session("test.txt");
+    session.execute();
+    std::cout << "result: " << session.result() << std::endl;
+    return 0;
 }
