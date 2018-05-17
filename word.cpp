@@ -1,17 +1,17 @@
 #include "word.h"
 #include <utility>
 
-Word::Word(QString const& word) : m_str(word)
+Word::Word(std::string const& word) : m_str(word)
 {
     m_weight.compute(*this);
 }
 
-Word::Word(QString&& word) : m_str(std::move(word))
+Word::Word(std::string&& word) : m_str(std::move(word))
 {
     m_weight.compute(*this);
 }
 
-QString const& Word::toString() const
+std::string const& Word::toString() const
 {
     return m_str;
 }

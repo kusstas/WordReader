@@ -8,8 +8,8 @@ WordWeight::WordWeight() : m_result(0U)
 void WordWeight::compute(Word const& word)
 {
     unsigned int const offset = -('A' - 1);
-    for (QChar s : word.toString()) {
-        m_result += s.toLatin1() + offset;
+    for (char s : word.toString()) {
+        m_result += s + offset;
     }
 }
 

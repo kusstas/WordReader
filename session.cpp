@@ -1,8 +1,7 @@
 #include "session.h"
 #include <algorithm>
-#include <QDebug>
 
-Session::Session(QString const& fileName)
+Session::Session(std::string const& fileName)
     : m_fileName(fileName), m_result(0)
 {
 

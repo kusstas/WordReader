@@ -2,17 +2,14 @@
 #define WORD_READER_H
 
 #include <vector>
+#include <string>
 #include "word.h"
-
-class QString;
-class QFile;
 
 class WordReader
 {
 public:
     WordReader();
-    std::vector<Word> read(QString const& fileName) const;
-    std::vector<Word> read(QFile& file) const;
+    std::vector<Word> read(std::string const& fileName) const;
 };
 
 #endif // WORD_READER_H

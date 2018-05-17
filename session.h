@@ -1,7 +1,7 @@
 #ifndef SESSION_H
 #define SESSION_H
 
-#include <QString>
+#include <string>
 #include "word_reader.h"
 
 
@@ -9,7 +9,7 @@ class Session
 {
 public:
 
-    Session(QString const& fileName);
+    Session(std::string const& fileName);
 
     void execute();
     size_t result() const;
@@ -17,7 +17,7 @@ public:
 private:
 
     WordReader m_wordReader;
-    QString m_fileName;
+    std::string m_fileName;
 
     size_t m_result;
 };

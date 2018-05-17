@@ -3,7 +3,7 @@
 
 int main()
 {
-    Session session("test.txt");
+    Session session("names.txt");
     session.execute();
     std::cout << "result: " << session.result() << std::endl;
     return 0;

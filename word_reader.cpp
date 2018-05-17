@@ -1,39 +1,28 @@
 #include "word_reader.h"
+#include <fstream>
 
-#include <QString>
-#include <QFile>
+#include <QDebug>
+
 
 WordReader::WordReader()
 {
 }
 
-std::vector<Word> WordReader::read(QString const& fileName) const
+std::vector<Word> WordReader::read(std::string const& fileName) const
 {
-    QFile file(fileName);
-    file.open(QFile::ReadOnly | QFile::Text);
-    std::vector<Word> const& result = read(file);
-    file.close();
-    return result;
-}
-
-std::vector<Word> WordReader::read(QFile& file) const
-{
+    std::ifstream input(fileName);
     std::vector<Word> out;
-    bool word = false;
-    QString str;
-    char s;
-    while (!file.atEnd()) {
-        file.getChar(&s);
-        if (s == '\"') {
-            if (word) {
-               out.emplace_back(std::move(str));
-               str = "";
-            }
-            word = !word;
-        }
-        else if (word) {
-            str += s;
+
+    char const delim = '\"';
+    while (input.peek() != EOF) {
+        char s = input.get();
+        if (s == delim) {
+            std::string tmp;
+            std::getline(input, tmp, delim);
+            out.emplace_back(tmp);
         }
     }
+
+    input.close();
     return out;
 }
