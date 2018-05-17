@@ -20,7 +20,7 @@ void Session::execute()
     }
 }
 
-size_t Session::result() const
+unsigned long long Session::result() const
 {
     return m_result;
 }

@@ -12,14 +12,14 @@ public:
     Session(std::string const& fileName);
 
     void execute();
-    size_t result() const;
+    unsigned long long result() const;
 
 private:
 
     WordReader m_wordReader;
     std::string m_fileName;
 
-    size_t m_result;
+    unsigned long long m_result;
 };
 
 #endif // SESSION_H
