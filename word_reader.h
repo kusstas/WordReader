@@ -10,6 +10,8 @@ class WordReader
 public:
     WordReader();
     std::vector<Word> read(std::string const& fileName) const;
+private:
+     char const delim = '\"';
 };
 
 #endif // WORD_READER_H
